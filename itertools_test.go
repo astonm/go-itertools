@@ -69,8 +69,11 @@ func TestRepeat(t *testing.T) {
 }
 
 func TestAccumulate(t *testing.T) {
-	runningSums := Accumulate(NewSeq(1, 2, 3), func(x, y int) int { return x + y })
+	runningSums := Accumulate(NewSeq(1, 2, 3), func(x, y int) int { return x + y }, 0)
 	assertSequenceMatch(t, runningSums, []int{1, 3, 6})
+
+	runningProducts := Accumulate(NewSeq(1, 2, 3), func(x, y int) int { return x * y }, 1)
+	assertSequenceMatch(t, runningProducts, []int{1, 2, 6})
 }
 
 func TestBatched(t *testing.T) {

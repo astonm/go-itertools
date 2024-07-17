@@ -96,12 +96,12 @@ func Repeat[T any](val T, n int) iter.Seq[T] {
 	}
 }
 
-func Accumulate[T any](s iter.Seq[T], op func(T, T) T) iter.Seq[T] {
+func Accumulate[T any](s iter.Seq[T], op func(T, T) T, initial T) iter.Seq[T] {
 	return func(yield func(T) bool) {
-		var sum T
+		acc := initial
 		for v := range s {
-			sum = op(sum, v)
-			if !yield(sum) {
+			acc = op(acc, v)
+			if !yield(acc) {
 				return
 			}
 		}
