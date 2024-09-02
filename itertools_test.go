@@ -243,7 +243,7 @@ func TestTakeWhile(t *testing.T) {
 
 func TestTee(t *testing.T) {
 	vals := []int{2, 4, 6, 8}
-	seq0, seq1 := Tee(OfSlice(vals))
+	seq0, seq1 := Tee(FromSlice(vals))
 
 	s0, stop0 := iter.Pull(seq0)
 	s1, stop1 := iter.Pull(seq1)
@@ -265,8 +265,8 @@ func TestTee(t *testing.T) {
 }
 
 func TestZip(t *testing.T) {
-	chrs := OfSlice([]byte("2468"))
-	nums := OfSlice([]int{2, 4, 6, 8})
+	chrs := FromSlice([]byte("2468"))
+	nums := FromSlice([]int{2, 4, 6, 8})
 
 	for c, n := range Zip(chrs, nums) {
 		assert.Equal(t, c, byte('0'+n))
@@ -274,9 +274,9 @@ func TestZip(t *testing.T) {
 }
 
 func TestPullZip3(t *testing.T) {
-	chrs := OfSlice([]byte("2468"))
-	nums := OfSlice([]int{2, 4, 6, 8})
-	flts := OfSlice([]float32{2.0, 4.0, 6.0, 8.0})
+	chrs := FromSlice([]byte("2468"))
+	nums := FromSlice([]int{2, 4, 6, 8})
+	flts := FromSlice([]float32{2.0, 4.0, 6.0, 8.0})
 
 	next, stop := PullZip3(chrs, nums, flts)
 	defer stop()

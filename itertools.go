@@ -6,10 +6,10 @@ import (
 )
 
 func NewSeq[T any](vals ...T) iter.Seq[T] {
-	return OfSlice(vals)
+	return FromSlice(vals)
 }
 
-func OfSlice[T any](vals []T) iter.Seq[T] {
+func FromSlice[T any](vals []T) iter.Seq[T] {
 	return func(yield func(T) bool) {
 		for i := 0; i < len(vals); i++ {
 			if !yield(vals[i]) {
