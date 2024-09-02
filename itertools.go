@@ -21,7 +21,7 @@ func FromSlice[T any](vals []T) iter.Seq[T] {
 	}
 }
 
-// Enumerate takes an `iter.Seq` and returns an `iter.Seq2` pairing a zero-based index with each original sequence value
+// Enumerate takes an [iter.Seq] and returns an [iter.Seq2] pairing a zero-based index with each original sequence value
 func Enumerate[T any](s iter.Seq[T]) iter.Seq2[int, T] {
 	return func(yield func(int, T) bool) {
 		var i int
