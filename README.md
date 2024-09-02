@@ -1,5 +1,6 @@
 # go-itertools - Python's itertools for Go iterators
 
+[![tag](https://img.shields.io/github/tag/astonm/go-itertools.svg)](https://github.com/astonm/go-itertools/tags)
 ![Go Version](https://img.shields.io/badge/Go-%3E%3D%201.23-007d9c)
 [![License](https://img.shields.io/github/license/astonm/go-itertools)](./LICENSE)
 
